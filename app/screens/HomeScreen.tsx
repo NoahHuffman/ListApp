@@ -1,10 +1,33 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+// HomeScreen.tsx
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import ZipCodePopup from '../components/ZipComponent';
 
 const HomeScreen = () => {
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
+  const handleOpenPopup = () => {
+    setPopupVisible(true);
+  };
+
+  const handleClosePopup = () => {
+    setPopupVisible(false);
+  };
+
+  const handleZipCodeSubmit = (zipCode: string) => {
+    console.log('Zip Code submitted:', zipCode);
+    // You can handle the zip code submission here (e.g., save it, send it to an API, etc.)
+  };
+
   return (
     <View style={styles.container}>
       <Text>Home</Text>
+      <Button title="Enter Zip Code" onPress={handleOpenPopup} />
+      <ZipCodePopup
+        visible={isPopupVisible}
+        onClose={handleClosePopup}
+        onSubmit={handleZipCodeSubmit}
+      />
     </View>
   );
 };
