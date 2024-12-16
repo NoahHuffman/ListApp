@@ -1,40 +1,53 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet } from 'react-native';
-import HomeScreen from './components/HomeScreen';
-import SearchScreen from './components/SearchScreen';
-import ProfileScreen from './components/ProfileScreen';
+import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import HomeScreen from './screens/HomeScreen';
+import ListsScreen from './screens/ListsScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import SearchScreen from './screens/SearchScreen';
+
+const homeName = "Home";
+const searchName = "Search";
+const listsName = "Lists";
+const settingsName = "Settings";
 
 const Tab = createBottomTabNavigator();
 
-const App = () => {
+function MainContainer() {
   return (
-    // <NavigationContainer>
       <Tab.Navigator
-        screenOptions={{
-          tabBarStyle: styles.tabBar,
-          tabBarLabelStyle: styles.tabBarLabel,
-          headerShown: false,
-        }}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Search" component={SearchScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        initialRouteName={homeName}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+            let rn = route.name;
+
+            if (rn === homeName) {
+              iconName = focused ? 'home' : 'home-outline';
+            } else if (rn === searchName) {
+              iconName = focused ? 'search' : 'search-outline';
+            } else if (rn === listsName) {
+              iconName = focused ? 'list' : 'list-outline';
+            } else {
+              iconName = focused ? 'settings' : 'settings-outline';
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'tomato',
+          tabBarInactiveTintColor: 'grey',
+          tabBarLabelStyle: { paddingBottom: 10, fontSize: 10 },
+          tabBarStyle: { padding: 10, height: 70 },
+        })}>
+        
+        <Tab.Screen name={homeName} component={HomeScreen} />
+        <Tab.Screen name={searchName} component={SearchScreen} />
+        <Tab.Screen name={listsName} component={ListsScreen} />
+        <Tab.Screen name={settingsName} component={SettingsScreen} />
+
       </Tab.Navigator>
-    // </NavigationContainer>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: '#ffb6b9',
-    borderTopWidth: 1,
-  },
-  tabBarLabel: {
-    fontSize: 14,
-    color: '#333',
-  },
-});
-
-export default App;
+export default MainContainer;
