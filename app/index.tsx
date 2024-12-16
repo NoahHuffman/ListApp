@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import ListsScreen from './screens/ListsScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import SearchScreen from './screens/SearchScreen';
+import MapScreen from './screens/MapScreen';
 
 const homeName = "Home";
 const searchName = "Search";
@@ -44,7 +45,8 @@ function MainContainer() {
       <Tab.Screen name={homeName} component={HomeScreen} />
       <Tab.Screen name={searchName} component={SearchScreen} />
       <Tab.Screen name={listsName} component={ListsScreen} />
-      <Tab.Screen name={settingsName} component={SettingsScreen} />
+      <Tab.Screen name={"Map"} component={MapScreen} />
+      {/* <Tab.Screen name={settingsName} component={SettingsScreen} /> */}
 
     </Tab.Navigator>
   );
