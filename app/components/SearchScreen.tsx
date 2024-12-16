@@ -1,4 +1,3 @@
-// screens/SearchScreen.js
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -12,6 +11,7 @@ const SearchScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#fae3d9',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
