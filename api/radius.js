@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+import { API_KEY } from './constants';
 
 export const fetchStores = async (latitude, longitude) => {
     const radius = 1609.34; // 1609.34 = 1 mile in meters

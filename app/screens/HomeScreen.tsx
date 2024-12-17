@@ -16,7 +16,6 @@ const HomeScreen = () => {
 
   const handleZipCodeSubmit = (zipCode: string) => {
     console.log('Zip Code submitted:', zipCode);
-    // You can handle the zip code submission here (e.g., save it, send it to an API, etc.)
   };
 
   return (
